@@ -24,7 +24,13 @@ import authRoutes from "./routes/auth.js";
 
 const app=express();
 const PORT=8080;
-app.use(cors({origin:"https://sigmagptfrontend-kpn2.onrender.com"}));
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://sigmagptfrontend-kpn2.onrender.com"
+];
+app.use(cors({origin: allowedOrigins,
+  credentials: true}));
 app.use(express.json());
 
 app.use("/api",chatRoutes);
