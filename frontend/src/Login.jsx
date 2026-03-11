@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "./AuthContext.jsx";
-import "./Auth.css";
+import "./auth.css";
 
 function Login({ goToRegister }) {
   const { login } = useContext(AuthContext);
