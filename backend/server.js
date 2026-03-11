@@ -24,7 +24,7 @@ import authRoutes from "./routes/auth.js";
 
 const app=express();
 const PORT=8080;
-app.use(cors({origin:"https://sigmagptbackend-63vd.onrender.com"}));
+app.use(cors({origin:"https://sigmagpt-frontend.onrender.com"}));
 app.use(express.json());
 
 app.use("/api",chatRoutes);
