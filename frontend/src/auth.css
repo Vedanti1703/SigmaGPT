@@ -1,0 +1,72 @@
+/* Full page background */
+.authContainer {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f0f0f;
+}
+
+/* Card */
+.authCard {
+  background-color: #1a1a1a;
+  padding: 40px;
+  border-radius: 12px;
+  width: 350px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Title */
+.authCard h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: white;
+  font-weight: 600;
+}
+
+/* Input fields */
+.authInput {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background-color: #2a2a2a;
+  color: white;
+  font-size: 14px;
+}
+
+.authInput:focus {
+  outline: none;
+  border: 1px solid #4c8bf5;
+}
+
+/* Button */
+.authButton {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #4c8bf5;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.authButton:hover {
+  background-color: #3a6fd8;
+}
+
+/* Switch text */
+.authSwitch {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.authSwitch span {
+  color: #4c8bf5;
+  cursor: pointer;
+}
