@@ -20,7 +20,7 @@ function Chat() {
       return;
     }
 
-    const content = reply.split("");
+    const content = (reply || "").split("");
 
     let index = 0;
 

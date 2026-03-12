@@ -11,7 +11,7 @@ router.post("/test", async (req, res) => {
   try {
 
     const thread = new Thread({
-      userId: req.user.id,   // ⭐ add userId
+      userId: req.user.userId,   // ⭐ add userId
       threadId: "xyz",
       title: "Test Thread"
     });
@@ -33,7 +33,7 @@ router.get("/thread", authMiddleware, async (req, res) => {
   try {
 
     const threads = await Thread.find({
-      userId: req.user.id      // ⭐ filter by user
+      userId: req.user.userId      // ⭐ filter by user
     }).sort({ updatedAt: -1 });
 
     res.json(threads);
@@ -57,7 +57,7 @@ router.get("/thread/:threadId", authMiddleware, async (req, res) => {
 
     const thread = await Thread.findOne({
       threadId,
-      userId: req.user.id       
+      userId: req.user.userId       
     });
 
     if (!thread) {
@@ -85,7 +85,7 @@ router.delete("/thread/:threadId", authMiddleware, async (req, res) => {
 
     const deletedThread = await Thread.findOneAndDelete({
       threadId,
-      userId: req.user.id     
+      userId: req.user.userId     
     });
 
     if (!deletedThread) {
@@ -117,7 +117,7 @@ router.post("/chat", authMiddleware, async (req, res) => {
 
     let thread = await Thread.findOne({
       threadId,
-      userId: req.user.id     
+      userId: req.user.userId     
     });
 
 
@@ -126,7 +126,7 @@ router.post("/chat", authMiddleware, async (req, res) => {
 
       thread = new Thread({
 
-        userId: req.user.id,   
+        userId: req.user.userId,   
         threadId,
         title: message,
 
