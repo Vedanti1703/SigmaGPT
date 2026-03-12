@@ -33,10 +33,12 @@ router.post('/login', async (req, res) => {
     if (!isPasswordValid) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
+    
+     const JWT_SECRET = "mysupersecretkeyisVedanti1703";
     const token = jwt.sign({
       userId: user._id, name: user.name,
       email: user.email
-    }, 'your_jwt_secret', { expiresIn: '7d' });
+    }, JWT_SECRET, { expiresIn: '7d' });
     res.json({ token });
 
   } catch (error) {
