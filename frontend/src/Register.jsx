@@ -6,23 +6,26 @@ function Register({ goToLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = async () => {
-    const res = await fetch("https://sigmagptbackend-63vd.onrender.com/api/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ name, email, password })
-    });
+const handleRegister = async (e) => {
+  e.preventDefault();
 
-    const data = await res.json();
+  const res = await fetch("https://sigmagptbackend-63vd.onrender.com/api/auth/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ name, email, password })
+  });
 
-    if (res.ok) {
-      alert("Registered successfully! Please login.");
-    } else {
-      alert(data.error);
-    }
-  };
+  const data = await res.json();
+
+  if (res.ok) {
+    alert("Registered successfully! Please login.");
+    goToLogin();   // redirect to login page
+  } else {
+    alert(data.error || "Registration failed");
+  }
+};
 
  return (
   <div className="authContainer">
