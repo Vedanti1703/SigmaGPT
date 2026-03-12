@@ -8,8 +8,9 @@ function Login({ goToRegister }) {
   const [password, setPassword] = useState("");
 
   const handleLogin = async (e) => {
-    e.preventDefault();
-
+  e.preventDefault();
+  console.log("Login button clicked")
+  try {
     const res = await fetch("https://sigmagptbackend-63vd.onrender.com/api/auth/login", {
       method: "POST",
       headers: {
@@ -20,14 +21,18 @@ function Login({ goToRegister }) {
 
     const data = await res.json();
 
+    console.log("Response:", data);
+
     if (res.ok) {
       login(data.token);
     } else {
-      alert(data.message || "User does not exist");
-      goToRegister();  // 🔥 redirect to register
+      alert(data.message || "Login failed");
     }
-  };
 
+  } catch (error) {
+    console.error("Login error:", error);
+  }
+};
 return (
   <div className="authContainer">
     <div className="authCard">
