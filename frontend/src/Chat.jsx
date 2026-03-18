@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css";
 
-function Chat() {
+function Chat({ sentiments = {} }) {
 
   const { prevChats, newChats, reply } = useContext(MyContext);
 
@@ -55,7 +55,17 @@ function Chat() {
 
             {chat.role === "user" ? (
 
-              <p className="userMessage">{chat.content}</p>
+             <div className="userMessageWrapper">
+                <p className="userMessage">{chat.content}</p>
+                {sentiments[idx] && (
+                  <span
+                    className="sentimentEmoji"
+                    title="Sentiment detected by deep learning model"
+                  >
+                    {sentiments[idx]}
+                  </span>
+                )}
+              </div>
 
             ) : (
 
